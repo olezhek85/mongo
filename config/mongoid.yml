@@ -1,3 +1,13 @@
+development:
+  clients:
+    default:
+      uri: <%= ENV['MONGOLAB_URI'] %>
+
+test:
+  clients:
+    default:
+      uri: <%= ENV['MONGOLAB_URI'] %>
+        
 production:
   clients:
     default:
