@@ -4,7 +4,7 @@ ruby '2.3.0'
 gem "passenger"
 gem 'rails_12factor', group: :production
 
-gem 'mongoid'
+gem 'mongoid', '~> 5.1', '>= 5.1.1'
 gem 'bson_ext'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
