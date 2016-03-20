@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
 
-gem "puma"
+gem "passenger"
 gem 'rails_12factor', group: :production
 
 gem 'mongoid'
