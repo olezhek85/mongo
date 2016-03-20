@@ -1,4 +1,7 @@
 class PeopleController < ApplicationController
+  before_action :set_person, only: [:edit, :update, :destroy]
+
+
   def index
     @people = Person.all
   end
@@ -10,18 +13,22 @@ class PeopleController < ApplicationController
   def create
     @person = Person.new(person_params)
 
-    if @person.save
-      redirect_to people_path, notice: "The person has been created!"# and return
+    respond_to do |format|
+      if @person.save
+        format.html { redirect_to @person, notice: 'The person has been created!' }
+        format.json { render :show, status: :created, location: @person }
+      else
+        format.html { render :new }
+        format.json { render json: @person.errors, status: :unprocessable_entity }
+      end
     end
-    render 'new'
+
   end
 
   def edit
-    @person = Person.find(params[:id])
   end
 
   def update
-    @person = Person.find(params[:id])
 
     if @person.update_attributes(person_params)
       redirect_to people_path, notice: "#{first_name} #{last_name} has been updated!"# and return
@@ -31,12 +38,17 @@ class PeopleController < ApplicationController
   end
 
   def destroy
-    @person = Person.find(params[:id])
     @person.destroy
 
     redirect_to people_path, notice: "#{first_name} #{last_name} has been deleted!" #and return
   end
+
 private
+
+  def set_person
+      @person = Person.find(params[:id])
+  end
+
   def person_params
     params.require(:person).permit(:first_name, :last_name, :email, :notes)
   end
