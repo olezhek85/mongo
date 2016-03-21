@@ -30,8 +30,8 @@ class PeopleController < ApplicationController
 
   def update
     respond_to do |format|
-      if @person.update
-        format.html { redirect_to people_path, notice: '#{first_name} #{last_name} has been updated!' }
+      if @person.update_attributes(person_params)
+        format.html { redirect_to people_path, notice: '#{@person.first_name} #{@person.last_name} has been updated!' }
         format.json { render :show, status: :ok, location: @person }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class PeopleController < ApplicationController
     @person.destroy
 
     respond_to do |format|
-      format.html { redirect_to people_path, notice: '#{first_name} #{last_name} has been deleted!' }
+      format.html { redirect_to people_path, notice: '#{@person.first_name} #{@person.last_name} has been deleted!' }
       format.json { head :no_content }
     end
 
