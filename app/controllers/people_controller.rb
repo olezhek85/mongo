@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  before_action :set_person, only: [:edit, :update, :destroy]
+  before_action :set_person, only: [ :edit, :update, :destroy ]
 
 
   def index
@@ -29,18 +29,25 @@ class PeopleController < ApplicationController
   end
 
   def update
-
-    if @person.update_attributes(person_params)
-      redirect_to people_path, notice: "#{first_name} #{last_name} has been updated!"# and return
+    respond_to do |format|
+      if @person.update
+        format.html { redirect_to people_path, notice: '#{first_name} #{last_name} has been updated!' }
+        format.json { render :show, status: :ok, location: @person }
+      else
+        format.html { render :new }
+        format.json { render json: @person.errors, status: :unprocessable_entity }
+      end
     end
-
-    render 'edit'
   end
 
   def destroy
     @person.destroy
 
-    redirect_to people_path, notice: "#{first_name} #{last_name} has been deleted!" #and return
+    respond_to do |format|
+      format.html { redirect_to people_path, notice: '#{first_name} #{last_name} has been deleted!' }
+      format.json { head :no_content }
+    end
+
   end
 
 private
