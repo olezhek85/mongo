@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
-  root to: "people#index"
 
-  resources :people, except: :show
+  root to: "visitors#index"
+
+  resources :visitors, only: [:index, :create, :destroy], defaults: {format: :json}
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

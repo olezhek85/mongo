@@ -8,9 +8,11 @@ gem 'mongoid', '~> 5.1', '>= 5.1.1'
 gem 'bson_ext'
 
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'angularjs-rails'
 gem 'sass-rails', '~> 5.0'
 
 gem 'faker'
+gem 'responders'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
