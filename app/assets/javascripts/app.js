@@ -19,7 +19,7 @@ visitorCenter.controller("visitorsController", function($scope, Visitor) {
   }
 
   $scope.deleteVisitor = function(index) {
-    
+    console.log("index: "+index);
     visitor = $scope.visitors[index]
     Visitor.delete(visitor)
     $scope.visitors.splice(index, 1);

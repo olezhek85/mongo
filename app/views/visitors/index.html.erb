@@ -47,7 +47,7 @@
           <td>{{ visitor.first_name }}</td>
           <td>{{ visitor.last_name }}</td>
           <td>{{ visitor.reason }}</td>
-          <td><a class="btn btn-danger" ng-click="deleteVisitor(visitor.id)">Remove</a></td>
+          <td><a class="btn btn-danger" ng-click="deleteVisitor($index)">Remove</a></td>
         </tr>
       </tbody>
     </table>
