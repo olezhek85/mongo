@@ -21,6 +21,7 @@ visitorCenter.controller("visitorsController", function($scope, Visitor) {
     
     visitor = $scope.visitors[index]
     Visitor.delete(visitor)
-    $scope.visitors.splice(index, 1);
+    $scope.visitors.splice( $scope.visitors.indexOf(visitor), 1 );
+    // $scope.visitors.splice(index, 1);
   }
 })
