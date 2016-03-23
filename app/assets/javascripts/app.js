@@ -4,7 +4,7 @@ visitorCenter.factory("Visitor", function($resource) {
   return $resource("visitors/:id", { id: '@id' }, {
     index:   { method: 'GET', isArray: true, responseType: 'json' },
     update:  { method: 'PUT', responseType: 'json' },
-    delete:  { method: 'DELETE', id: '@id', responseType: 'json' }
+    delete:  { method: 'DELETE', params: '@id', responseType: 'json' }
   });
 })
 
