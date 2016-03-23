@@ -12,8 +12,13 @@ class VisitorsController < ApplicationController
   end
 
   def destroy
-    respond_with Visitor.destroy!(params[:id])
+    visitor = Visitor.find(params[:id])
+    visitor.destroy!
+    respond_with visitor
+    head :no_content
   end
+    
+    # respond_with Visitor.destroy(params[:id])
 
 private
   def visitor_params
