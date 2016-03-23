@@ -1,5 +1,6 @@
 class VisitorsController < ApplicationController
   respond_to :json
+  
   def index
     respond_to do |format|
       format.json { render json: Visitor.all }
